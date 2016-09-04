@@ -1,3 +1,11 @@
+.none {
+  display: none;
+}
+
+.block {
+  display: block;
+}
+
 /*
   Animating github icon
 ---------------------------*/
@@ -14,10 +22,6 @@
 
 .git .octo-arm {
   transform-origin: 130px 106px;
-}
-
-.copy-btn {
-  margin-top: 30px;
 }
 
 .git .octo-arm,
@@ -38,6 +42,10 @@ span.error {
   display: none;
   transition: 0.3s all ease-in-out;
   transform: translateY(100%);
+}
+
+.form-inputs label {
+  margin-bottom: 20px;
 }
 
 .choose-social {

@@ -1,4 +1,4 @@
-  document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
 
   // Selecting main node elements
   const wrap = document.querySelector('.wrapper');
@@ -13,8 +13,14 @@
   const selectAllSections = subjects.querySelector('label input[data-type="all"]');
 
   const copyBtn = formInputs.querySelector('.copy-btn');
-
   const inputs = formInputs.querySelectorAll('input[type="text"]');
+
+  const fieldsRequired = {
+    all: ['title', 'description', 'url', 'summaryImage', 'twitterPublisher', 'twitterAuthor', 'siteName'],
+    facebook: ['title', 'description', 'url', 'summaryImage', 'siteName'],
+    twitter: ['title', 'description', 'summaryImage', 'twitterPublisher', 'twitterAuthor'],
+    google: ['title', 'description', 'summaryImage']
+  };
 
   // Sections to show
   let socialSections = [];
@@ -27,13 +33,7 @@
     summaryImage: '',
     twitterPublisher: '',
     twitterAuthor: '',
-    contentType: '',
     siteName: ''
-    // publishedTime: '',
-    // modifiedTime: '',
-    // articleSection: '',
-    // articleTag: '',
-    // fbAdminId: ''
   };
 
   // Function declaration section
@@ -61,13 +61,10 @@
 
   // Return needed data
   const initialize = () => {
-
-
+    let lines = [];
     Object.keys(inputFields).map(key => {
       inputFields[key] = document.querySelector(`.${key}`).value || '';
     });
-
-    let lines = [];
 
     lines.push('<!-- Copy everything from input and paste it in your html file -->');
 
@@ -82,6 +79,7 @@
 
     lines.push('');
 
+    // GOOGLE
     if (socialSections.includes('google')) {
       lines.push('\t<!-- Schema.org markup (Google) -->');
       lines.push(`\t<meta itemprop="name" content="${inputFields.title}">`);
@@ -141,9 +139,19 @@
       output.value = initialize();
     }, false);
   });
+
+  //
   submit.addEventListener('click', e => {
     choosedSections(e);
     output.value = initialize();
+
+    socialSections.forEach(items => {
+      fieldsRequired[items].forEach(item => {
+        formInputs.querySelector(`.${item}`).parentNode.classList.remove('none');
+        formInputs.querySelector(`.${item}`).parentNode.classList.add('block');
+      });
+    });
+
   });
 
   // copying text to clipboard on copy button click

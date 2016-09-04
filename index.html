@@ -55,7 +55,6 @@
           <p class="question">Which social content silos you need to support?</p>
           <form class="apps-wrapper">
             <label>Select All<input type="checkbox" data-type="all"></label>
-            <label>Instagram<input type="checkbox" data-type="instagram"></label>
             <label>Facebook<input type="checkbox" data-type="facebook"></label>
             <label>Twitter<input type="checkbox" data-type="twitter"></label>
             <label>Google<input type="checkbox" data-type="google"></label>
@@ -65,6 +64,7 @@
       </div>
 
       <div class="container">
+
         <div class="row">
           <div class="column">
             <h1>HTML5 Head Generator</h1>
@@ -79,34 +79,14 @@
         <div class="row form form-inputs">
           <form>
             <div class="four columns">
-              <!--TODO: Maximum length 60-70 characters.-->
-              <label>Page Title<input type="text" placeholder="Page Title" class="title u-full-width"></label>
-              <!--TODO: No longer than 155 characters.-->
-              <label>Page Description<input type="text" placeholder="Page Description" class="description u-full-width"></label>
-              <label>Page URL<input type="text" placeholder="http://yoursite.com" class="url u-full-width"></label>
-
-              <!--
-              Summary Image.
-              * Twitter: summary card with large image must be at least 280x150px.
-              * OpenGraph: recommended 1200x627px (1.91/1 ratio), max 5MB. Smaller than 600 x 315 px renders tiny. Min is 200 x 200.
-              * Pinterest reqs?
-              -->
-              <label>Summary Image<input type="text" placeholder="http://yoursite.com/summary.jpg" class="summaryImage u-full-width"></label>
-              <label>Publisher Twitter Handle<input type="text" placeholder="@publisher" class="twitterPublisher u-full-width"></label>
-              <label>Author Twitter Handle<input type="text" placeholder="@author" class="twitterAuthor u-full-width"></label>
-              <!--TODO: make into a select: website, article, blog-->
-              <label>Content Type<input  type="text" placeholder="article" class="contentType u-full-width"></label>
-              <label>Site Name<input type="text" placeholder="Your Site Name" class="siteName u-full-width"></label>
-
+              <label class="none">Page Title<input type="text" placeholder="Page Title" class="title u-full-width"></label>
+              <label class="none">Page Description<input type="text" placeholder="Page Description" class="description u-full-width"></label>
+              <label class="none">Page URL<input type="text" placeholder="http://website.com" class="url u-full-width"></label>
+              <label class="none">Summary Image<input type="text" placeholder="http://website.com/summary.png" class="summaryImage u-full-width"></label>
+              <label class="none">Publisher Twitter Handle<input type="text" placeholder="@publisher" class="twitterPublisher u-full-width"></label>
+              <label class="none">Author Twitter Handle<input type="text" placeholder="@author" class="twitterAuthor u-full-width"></label>
+              <label class="none">Site Name<input type="text" placeholder="Your Site Name" class="siteName u-full-width"></label>
               <a class="button button-primary copy-btn" href="#">Copy</a>
-
-              <!--
-                <label>Published Time<input type="text" placeholder="2013-09-17T05:59:00+01:00"></label>
-                <label>ModifiedTime<input type="text" placeholder="2013-09-17T05:59:00+01:00"></label>
-                <label>Article Section<input type="text" placeholder="Article Section"></label>
-                <label>Article Tag<input type="text" placeholder="yourtag"></label>
-              -->
-
             </div>
 
             <div class="eight columns">
