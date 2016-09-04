@@ -13,11 +13,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const selectAllSections = subjects.querySelector('label input[data-type="all"]');
 
   const copyBtn = formInputs.querySelector('.copy-btn');
-  const inputs = formInputs.querySelectorAll('input[type="text"]');
+  const inputs = formInputs.querySelectorAll('input[type="text"], select');
 
   const fieldsRequired = {
-    all: ['title', 'description', 'url', 'summaryImage', 'twitterPublisher', 'twitterAuthor', 'siteName'],
-    facebook: ['title', 'description', 'url', 'summaryImage', 'siteName'],
+    all: ['title', 'description', 'url', 'summaryImage', 'twitterPublisher', 'twitterAuthor', 'type', 'siteName'],
+    facebook: ['title', 'description', 'url', 'summaryImage', 'type', 'siteName'],
     twitter: ['title', 'description', 'summaryImage', 'twitterPublisher', 'twitterAuthor'],
     google: ['title', 'description', 'summaryImage']
   };
@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     summaryImage: '',
     twitterPublisher: '',
     twitterAuthor: '',
+    type: '',
     siteName: ''
   };
 
@@ -113,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (socialSections.includes('facebook') || socialSections.includes('pinterest')) {
       lines.push('\t<!-- Open Graph markup (Facebook, Pinterest) -->');
       lines.push(`\t<meta property="og:title" content="${inputFields.title}"/>`);
-      lines.push('\t<meta property="og:type" content="article"/>');
+      lines.push(`\t<meta property="og:type" content="${inputFields.type}"/>`);
       lines.push(`\t<meta property="og:url" content="${inputFields.url}"/>`);
       lines.push(`\t<meta property="og:image" content="${inputFields.summaryImage}"/>`);
       lines.push(`\t<meta property="og:description" content="${inputFields.description}"/>`);
@@ -135,9 +136,15 @@ document.addEventListener('DOMContentLoaded', () => {
   // ============================
   // Adding keyup event to listen for all changes and update immediately
   [].forEach.call(inputs, input => {
-    input.addEventListener('keyup', () => {
-      output.value = initialize();
-    }, false);
+    if (input.nodeName === 'SELECT') {
+      input.addEventListener('change', () => {
+        output.value = initialize();
+      }, false);
+    } else {
+      input.addEventListener('keyup', () => {
+        output.value = initialize();
+      }, false);
+    }
   });
 
   //
