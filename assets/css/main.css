@@ -16,6 +16,10 @@
   transform-origin: 130px 106px;
 }
 
+.copy-btn {
+  margin-top: 30px;
+}
+
 .git .octo-arm,
 .git .octo-body {
   fill: #fff;
