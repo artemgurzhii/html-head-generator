@@ -37,6 +37,19 @@
     <link rel="icon" type="image/png" href="https://artemgurzhii.github.io/html-head-generator/assets/img/favicon.png">
     <link rel="index" href="https://artemgurzhii.github.io/html-head-generator" title="HTML5 Head Generator">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,300,600">
+    <script type="text/javascript">
+      const loadCSS = path => {
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = path;
+        console.log(path);
+        console.log(link);
+        document.head.appendChild(link);
+      };
+
+      loadCSS('assets/css/other.min.css');
+      loadCSS('assets/css/main.css');
+    </script>
   </head>
   <body>
 
