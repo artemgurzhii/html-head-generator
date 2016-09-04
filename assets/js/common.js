@@ -141,6 +141,10 @@
       output.value = initialize();
     }, false);
   });
+  submit.addEventListener('click', e => {
+    choosedSections(e);
+    output.value = initialize();
+  });
 
   // copying text to clipboard on copy button click
   copyBtn.addEventListener('click', e => {
