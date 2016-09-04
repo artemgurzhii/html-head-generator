@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('DOMContentLoaded', () => {
 
   // Selecting main node elements
   const wrap = document.querySelector('.wrapper');
@@ -10,7 +10,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const submit = subjects.querySelector('.submit-btn');
   const inputCheckbox = subjects.querySelectorAll('label input');
-  const allSections = subjects.querySelector('label input[data-type="all"]');
+  const selectAllSections = subjects.querySelector('label input[data-type="all"]');
+
+  const copyBtn = formInputs.querySelector('.copy-btn');
 
   const inputs = formInputs.querySelectorAll('input[type="text"]');
 
@@ -18,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let socialSections = [];
 
   // Input types
-  let inputFields = {
+  const inputFields = {
     title: '',
     description: '',
     url: '',
@@ -60,10 +62,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // Return needed data
   const initialize = () => {
 
-    let fields = {};
 
     Object.keys(inputFields).map(key => {
-      fields[key] = document.querySelector(`.${key}`).value || '';
       inputFields[key] = document.querySelector(`.${key}`).value || '';
     });
 
@@ -74,56 +74,63 @@ document.addEventListener('DOMContentLoaded', () => {
     // MAIN
     lines.push('<head>');
     lines.push('');
-    lines.push('<!-- Place this data between the <head> tags of your website -->');
-    lines.push('<meta charset="utf-8">');
-    lines.push('<meta http-equiv="X-UA-Compatible" content="IE=edge">');
-    lines.push('<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimal-ui">');
-    lines.push(`<title>${fields.title}</title>`);
-    lines.push(`<meta name="description" content="${fields.description}"/>`);
+    lines.push('\t<meta charset="utf-8">');
+    lines.push('\t<meta http-equiv="X-UA-Compatible" content="IE=edge">');
+    lines.push('\t<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimal-ui">');
+    lines.push(`\t<title>${inputFields.title}</title>`);
+    lines.push(`\t<meta name="description" content="${inputFields.description}"/>`);
 
     lines.push('');
 
     if (socialSections.includes('google')) {
-      lines.push('<!-- Schema.org markup (Google) -->');
-      lines.push(`<meta itemprop="name" content="${fields.title}">`);
-      lines.push(`<meta itemprop="description" content="${fields.description}">`);
-      lines.push(`<meta itemprop="image" content="${fields.summaryImage}">`);
+      lines.push('\t<!-- Schema.org markup (Google) -->');
+      lines.push(`\t<meta itemprop="name" content="${inputFields.title}">`);
+      lines.push(`\t<meta itemprop="description" content="${inputFields.description}">`);
+      lines.push(`\t<meta itemprop="image" content="${inputFields.summaryImage}">`);
       lines.push('');
     }
 
     // TWITTER
     if (socialSections.includes('twitter')) {
-      lines.push('<!-- Twitter Card markup-->');
-      lines.push('<meta name="twitter:card" content="summary">');
-      lines.push(`<meta name="twitter:site" content="${fields.twitterPublisher}">`);
-      lines.push(`<meta name="twitter:title" content="${fields.title}">`);
-      lines.push(`<meta name="twitter:description" content="${fields.description}">`);
-      lines.push('<!-- The image must be a minimum size of 120px by 120px and must be less than 1MB in file size. The image will be cropped to a square on all platforms.	 -->');
+      lines.push('\t<!-- Twitter Card markup-->');
+      lines.push('\t<meta name="twitter:card" content="summary">');
+      lines.push(`\t<meta name="twitter:site" content="${inputFields.twitterPublisher}">`);
+      lines.push(`\t<meta name="twitter:title" content="${inputFields.title}">`);
+      lines.push(`\t<meta name="twitter:description" content="${inputFields.description}">`);
+      lines.push('\t<!-- The image must be a minimum size of 120px by 120px and must be less than 1MB in file size. The image will be cropped to a square on all platforms.	 -->');
 
-      if (fields.summaryImage.value) {
-        lines.push(`<meta name="twitter:image" content="${fields.summaryImage}">`);
+
+      if (inputFields.summaryImage) {
+        lines.push(`\t<meta name="twitter:image" content="${inputFields.summaryImage}">`);
       } else {
-        lines.push('<meta name="twitter:image" content="summary">');
+        lines.push('\t<meta name="twitter:image" content="summary">');
       }
 
-      lines.push(`<meta name="twitter:image:alt" content="${fields.description}">`);
-      lines.push(`<meta name="twitter:creator" content="${fields.twitterAuthor}">`);
+      lines.push(`\t<meta name="twitter:image:alt" content="${inputFields.description}">`);
+      lines.push(`\t<meta name="twitter:creator" content="${inputFields.twitterAuthor}">`);
       lines.push('');
     }
 
     // FACEBOOK, PINTEREST
     if (socialSections.includes('facebook') || socialSections.includes('pinterest')) {
-      lines.push('<!-- Open Graph markup (Facebook, Pinterest) -->');
-      lines.push(`<meta property="og:title" content="${fields.title}/>`);
-      lines.push('<meta property="og:type" content="article"/>');
-      lines.push(`<meta property="og:url" content="${fields.url}/>`);
-      lines.push(`<meta property="og:image" content="${fields.summaryImage}/>`);
-      lines.push(`<meta property="og:description" content="${fields.description}/>`);
-      lines.push(`<meta property="og:site_name" content="${fields.siteName}/>`);
+      lines.push('\t<!-- Open Graph markup (Facebook, Pinterest) -->');
+      lines.push(`\t<meta property="og:title" content="${inputFields.title}"/>`);
+      lines.push('\t<meta property="og:type" content="article"/>');
+      lines.push(`\t<meta property="og:url" content="${inputFields.url}"/>`);
+      lines.push(`\t<meta property="og:image" content="${inputFields.summaryImage}"/>`);
+      lines.push(`\t<meta property="og:description" content="${inputFields.description}"/>`);
+      lines.push(`\t<meta property="og:site_name" content="${inputFields.siteName}"/>`);
     }
 
     lines.push('</head>');
     return lines.join('\n');
+  };
+
+  // Make all checkboxes toogle their state(checked: true || false)
+  const selectAll = bool => {
+    [].forEach.call(inputCheckbox, elem => {
+      elem.checked = bool;
+    });
   };
 
   // Event section
@@ -135,24 +142,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }, false);
   });
 
-  // Outputing first data for choosed sections
-  submit.addEventListener('click', e => {
-    choosedSections(e);
-    output.value = initialize();
+  // copying text to clipboard on copy button click
+  copyBtn.addEventListener('click', e => {
+    e.preventDefault();
+    output.select();
+    document.execCommand('copy');
   }, false);
 
   // Making all input[type="checkbox"] checked when ckicking on 'Select All'
-  allSections.addEventListener('click', e => {
-    if (allSections.checked) {
-      [].forEach.call(inputCheckbox, elem => {
-        elem.checked = true;
-      });
-    } else {
-      [].forEach.call(inputCheckbox, elem => {
-        elem.checked = false;
-      });
-    }
-  });
+  selectAllSections.addEventListener('click', () => selectAllSections.checked ? selectAll(true) : selectAll(false));
 
 });
 
