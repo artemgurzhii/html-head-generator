@@ -1,5 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+  const loadCSS = path => {
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = path;
+    console.log(path);
+    console.log(link);
+    document.head.appendChild(link);
+  };
+
+  loadCSS('assets/css/other.min.css');
+  loadCSS('assets/css/main.css');
+
   // Selecting main node elements
   const wrap = document.querySelector('.wrapper');
   const output = wrap.querySelector('.output');
@@ -149,7 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  //
+  // returning inputs and setting textarea text on btn click
   submit.addEventListener('click', e => {
     choosedSections(e);
     output.value = initialize();
