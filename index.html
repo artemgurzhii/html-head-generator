@@ -38,18 +38,13 @@
     <meta name="twitter:description" content="HTML markup generator for social networks optimizations.">
     <meta name="twitter:image" content="assets/img/min/favicons/favicon_32.png">
 
-    <meta itemprop="name" content="HTML5 Head Generator">
-    <meta itemprop="description" content="HTML markup generator for social networks optimizations.">
-    <meta itemprop="image" content="assets/img/favicon.png">
-
     <link rel="dns-prefetch" href="https://artemgurzhii.github.io/html-generator">
     <link rel="preconnect" href="https://artemgurzhii.github.io/html-generator">
 
     <link rel="index" href="https://artemgurzhii.github.io/html-generator" title="HTML5 Head Generator">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,300,600">
     <link rel="stylesheet" href="assets/css/other.min.css">
     <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,300,600">
-
   </head>
   <body>
 
@@ -57,53 +52,26 @@
 
       <div class="choose-social">
         <div class="content">
-          <p class="question">Which social silos you need to support?</p>
-
+          <p class="question">Which social content silos you need to support?</p>
           <form class="apps-wrapper">
-
-            <label>
-              Select All
-              <input type="checkbox" data-type="all">
-            </label>
-
-            <label>
-              Instagram
-              <input type="checkbox" data-type="instagram">
-            </label>
-
-            <label>
-              Facebook
-              <input type="checkbox" data-type="facebook">
-            </label>
-
-            <label>
-              Twitter
-              <input type="checkbox" data-type="twitter">
-            </label>
-
-            <label>
-              Google
-              <input type="checkbox" data-type="google">
-            </label>
-
+            <label>Select All<input type="checkbox" data-type="all"></label>
+            <label>Instagram<input type="checkbox" data-type="instagram"></label>
+            <label>Facebook<input type="checkbox" data-type="facebook"></label>
+            <label>Twitter<input type="checkbox" data-type="twitter"></label>
+            <label>Google<input type="checkbox" data-type="google"></label>
             <a class="button button-primary submit-btn" href="#">Submit</a>
           </form>
-
         </div>
       </div>
 
       <div class="container">
-
         <div class="row">
           <div class="column">
-            <h1>Silo Buster</h1>
+            <h1>HTML5 Head Generator</h1>
             <p><em>A markup generator for URL display optimizations in social content silos.</em></p>
-
             <p><b>The generator supports Twitter cards, Pinterest rich pins, Google's structured data and Facebook's Open Graph.</b></p>
-
             <p>Add this markup to your web pages to make links to your site look great in social apps and websites! Also, making outbound content look attractive
             <em>helps people escape these content silos and return to the wild wild web!</em></p>
-
             <p><b>USAGE:</b> Fill out the form, and then copy and paste the markup into your web page in between the &lt;head&gt; tags.</p>
           </div>
         </div>
@@ -111,26 +79,11 @@
         <div class="row form form-inputs">
           <form>
             <div class="four columns">
-              <!--
-                TODO: Maximum length 60-70 characters.
-              -->
-              <label>
-                Page Title
-                <input type="text" placeholder="Page Title" class="title u-full-width">
-              </label>
-
-              <!--
-                TODO: No longer than 155 characters.
-              -->
-              <label>
-                Page Description
-                <input type="text" placeholder="Page Description" class="description u-full-width">
-              </label>
-
-              <label>
-                Page URL
-                <input type="text" placeholder="http://yoursite.com" class="url u-full-width">
-              </label>
+              <!--TODO: Maximum length 60-70 characters.-->
+              <label>Page Title<input type="text" placeholder="Page Title" class="title u-full-width"></label>
+              <!--TODO: No longer than 155 characters.-->
+              <label>Page Description<input type="text" placeholder="Page Description" class="description u-full-width"></label>
+              <label>Page URL<input type="text" placeholder="http://yoursite.com" class="url u-full-width"></label>
 
               <!--
               Summary Image.
@@ -138,64 +91,26 @@
               * OpenGraph: recommended 1200x627px (1.91/1 ratio), max 5MB. Smaller than 600 x 315 px renders tiny. Min is 200 x 200.
               * Pinterest reqs?
               -->
-              <label>
-                Summary Image
-                <input type="text" placeholder="http://yoursite.com/summary.jpg" class="summaryImage u-full-width">
-              </label>
+              <label>Summary Image<input type="text" placeholder="http://yoursite.com/summary.jpg" class="summaryImage u-full-width"></label>
+              <label>Publisher Twitter Handle<input type="text" placeholder="@publisher" class="twitterPublisher u-full-width"></label>
+              <label>Author Twitter Handle<input type="text" placeholder="@author" class="twitterAuthor u-full-width"></label>
+              <!--TODO: make into a select: website, article, blog-->
+              <label>Content Type<input  type="text" placeholder="article" class="contentType u-full-width"></label>
+              <label>Site Name<input type="text" placeholder="Your Site Name" class="siteName u-full-width"></label>
 
-              <label>
-                Publisher Twitter Handle
-                <input type="text" placeholder="@publisher" class="twitterPublisher u-full-width">
-              </label>
-
-              <label>
-                Author Twitter Handle
-                <input type="text" placeholder="@author" class="twitterAuthor u-full-width">
-              </label>
-
-              <!--
-                TODO: make into a select: website, article, blog
-              -->
-              <label>
-                Content Type
-                <input  type="text" placeholder="article"class="contentType u-full-width">
-              </label>
-
-              <label>
-                Site Name
-                <input type="text" placeholder="Your Site Name" class="siteName u-full-width">
-              </label>
               <a class="button button-primary copy-btn" href="#">Copy</a>
 
               <!--
-              <label>
-                Published Time
-                <input type="text" placeholder="2013-09-17T05:59:00+01:00">
-              </label>
-
-              <label>
-                ModifiedTime
-                <input type="text" placeholder="2013-09-17T05:59:00+01:00">
-              </label>
-
-              <label>
-                Article Section
-                <input type="text" placeholder="Article Section">
-              </label>
-
-              <label>
-                Article Tag
-                <input type="text" placeholder="yourtag">
-              </label>
+                <label>Published Time<input type="text" placeholder="2013-09-17T05:59:00+01:00"></label>
+                <label>ModifiedTime<input type="text" placeholder="2013-09-17T05:59:00+01:00"></label>
+                <label>Article Section<input type="text" placeholder="Article Section"></label>
+                <label>Article Tag<input type="text" placeholder="yourtag"></label>
               -->
 
             </div>
 
             <div class="eight columns">
-              <label>
-                Output Markup
-                <textarea class="output u-full-width"></textarea>
-              </label>
+              <label>Output Markup<textarea class="output u-full-width"></textarea></label>
             </div>
 
           </form>
@@ -209,7 +124,7 @@
               <li><a href="https://search.google.com/structured-data/testing-tool/u/0/">Google Stuctured Data Testing Tool</a></li>
               <li><a href="https://developers.facebook.com/tools/debug/og/object">Facebook OpenGraph Object Debugger</a></li>
               <li><a href="https://cards-dev.twitter.com/validator">Twitter Card Validator</a></li>
-              <li>Instagram De-linker Tester (TODO) (and fuck them)</li>
+              <!-- <li>Instagram De-linker Tester (TODO) (and fuck them)</li> -->
             </ul>
           </div>
 
@@ -238,6 +153,7 @@
               Thanks to Cyrus Shepard for <a href="https://moz.com/blog/meta-data-templates-123">his post on Moz.com</a> which laid out a bunch of great information in one place.
             </p>
           </div>
+        </div>
       </div>
 
       <a href="https://github.com/artemgurzhii/html-generator" class="git">
@@ -248,7 +164,6 @@
         </svg>
       </a>
     </div>
-
     <script src="assets/js/common.js"></script>
   </body>
 </html>
