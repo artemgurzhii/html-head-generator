@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const fieldsRequired = {
     all: ['title', 'description', 'url', 'summaryImage', 'twitterPublisher', 'twitterAuthor', 'type', 'siteName'],
     facebook: ['title', 'description', 'url', 'summaryImage', 'type', 'siteName'],
+    pinterest: ['title', 'description', 'url', 'summaryImage', 'type', 'siteName'],
     twitter: ['title', 'description', 'summaryImage', 'twitterPublisher', 'twitterAuthor'],
     google: ['title', 'description', 'summaryImage']
   };
@@ -113,11 +114,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // FACEBOOK, PINTEREST
     if (socialSections.includes('facebook') || socialSections.includes('pinterest')) {
       lines.push('\t<!-- Open Graph markup (Facebook, Pinterest) -->');
-      lines.push(`\t<meta property="og:title" content="${inputFields.title}"/>`);
-      lines.push(`\t<meta property="og:type" content="${inputFields.type}"/>`);
       lines.push(`\t<meta property="og:url" content="${inputFields.url}"/>`);
-      lines.push(`\t<meta property="og:image" content="${inputFields.summaryImage}"/>`);
+      lines.push(`\t<meta property="og:type" content="${inputFields.type}"/>`);
+      lines.push(`\t<meta property="og:title" content="${inputFields.title}"/>`);
       lines.push(`\t<meta property="og:description" content="${inputFields.description}"/>`);
+      lines.push(`\t<meta property="og:image" content="${inputFields.summaryImage}"/>`);
+      lines.push('\t<meta property="og:locale" content="en_US"/>');
       lines.push(`\t<meta property="og:site_name" content="${inputFields.siteName}"/>`);
     }
 
