@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     all: ['title', 'description', 'url', 'summaryImage', 'twitterPublisher', 'twitterAuthor', 'type', 'siteName'],
     facebook: ['title', 'description', 'url', 'summaryImage', 'type', 'siteName'],
     pinterest: ['title', 'description', 'url', 'summaryImage', 'type', 'siteName'],
-    twitter: ['title', 'description', 'summaryImage', 'twitterPublisher', 'twitterAuthor'],
+    twitter: ['title', 'description', 'url', 'summaryImage', 'twitterPublisher', 'twitterAuthor'],
     google: ['title', 'description', 'summaryImage']
   };
 
@@ -94,27 +94,27 @@ document.addEventListener('DOMContentLoaded', () => {
     if (socialSections.includes('twitter')) {
       lines.push('\t<!-- Twitter Card markup-->');
       lines.push('\t<meta name="twitter:card" content="summary">');
-      lines.push(`\t<meta name="twitter:site" content="${inputFields.twitterPublisher}">`);
+      lines.push(`\t<meta name="twitter:creator" content="${inputFields.twitterAuthor}">`);
+      lines.push(`\t<meta name="twitter:url" content="${inputFields.url}">`);
       lines.push(`\t<meta name="twitter:title" content="${inputFields.title}">`);
       lines.push(`\t<meta name="twitter:description" content="${inputFields.description}">`);
+      lines.push(`\t<meta name="twitter:site" content="${inputFields.twitterPublisher}">`);
       lines.push('\t<!-- The image must be a minimum size of 120px by 120px and must be less than 1MB in file size. The image will be cropped to a square on all platforms.	 -->');
-
 
       if (inputFields.summaryImage) {
         lines.push(`\t<meta name="twitter:image" content="${inputFields.summaryImage}">`);
+        lines.push(`\t<meta name="twitter:image:alt" content="${inputFields.description}">`);
       } else {
         lines.push('\t<meta name="twitter:image" content="summary">');
       }
 
-      lines.push(`\t<meta name="twitter:image:alt" content="${inputFields.description}">`);
-      lines.push(`\t<meta name="twitter:creator" content="${inputFields.twitterAuthor}">`);
       lines.push('');
     }
 
     // FACEBOOK, PINTEREST
     if (socialSections.includes('facebook') || socialSections.includes('pinterest')) {
       lines.push('\t<!-- Open Graph markup (Facebook, Pinterest) -->');
-      lines.push(`\t<meta property="og:url" content="${inputFields.url}"/>`);
+      lines.push(`\t<meta property="og:url" content="${inputFields.url}/"/>`);
       lines.push(`\t<meta property="og:type" content="${inputFields.type}"/>`);
       lines.push(`\t<meta property="og:title" content="${inputFields.title}"/>`);
       lines.push(`\t<meta property="og:description" content="${inputFields.description}"/>`);
