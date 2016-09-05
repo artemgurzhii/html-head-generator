@@ -134,8 +134,8 @@ document.addEventListener('DOMContentLoaded', () => {
       lines.push('');
     }
 
-    // FACEBOOK, PINTEREST
-    if (socialSections.includes('facebook') || socialSections.includes('pinterest')) {
+    // FACEBOOK
+    if (socialSections.includes('facebook')) {
       lines.push('\t\t<!-- Open Graph markup (Facebook) -->');
       lines.push(`\t\t<meta property="og:url" content="${inputFields.url}/"/>`);
       lines.push(`\t\t<meta property="og:type" content="${inputFields.type}"/>`);
@@ -145,11 +145,6 @@ document.addEventListener('DOMContentLoaded', () => {
       lines.push('\t\t<meta property="og:locale" content="en_US"/>');
       lines.push(`\t\t<meta property="og:site_name" content="${inputFields.siteName}"/>`);
       lines.push('');
-      lines.push('\t\t<!-- Open Graph markup (Pinterest) -->');
-      lines.push(`\t\t<meta property="article:published_time" content="${(new Date).toISOString()}"/>`);
-      lines.push(`\t\t<meta property="article:modified_time" content="${(new Date).toISOString()}"/>`);
-      lines.push(`\t\t<meta property="article:section" content="${inputFields.title}"/>`);
-      lines.push(`\t\t<meta property="article:tag" content="${inputFields.description}"/>`);
     }
 
     lines.push('\t</head>');
