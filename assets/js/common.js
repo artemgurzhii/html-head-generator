@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // GOOGLE
     if (socialSections.includes('google')) {
       lines.push('<!-- Update your html tag to include the itemscope and itemtype attributes. -->');
-      lines.push('<html itemscope="" itemtype="http://schema.org/Webpage">');
+      lines.push('<html lang="en" itemscope="" itemtype="http://schema.org/Webpage">');
     } else {
       lines.push('<html>');
     }
@@ -174,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // returning inputs and setting textarea text on btn click
+  // Returning inputs and setting textarea text on btn click
   submit.addEventListener('click', e => {
     choosedSections(e);
     output.value = initialize();
@@ -188,7 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   });
 
-  // copying text to clipboard on copy button click
+  // Copying text to the clipboard on copy button click
   copyBtn.addEventListener('click', e => {
     e.preventDefault();
     output.select();
