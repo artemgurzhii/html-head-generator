@@ -39,18 +39,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Function declaration section
   // ============================
+  // Create error
+  const error = (append, text) => {
+    const span = document.createElement('span');
+    span.classList.add('error');
+    span.textContent = text;
+    append.appendChild(span);
+  };
+
   // Validate meta tag value length
   const validateLength = (input, len) => {
     const parent = input.parentNode;
     if (input.value.length >= len && !parent.querySelector('.error')) {
-      const div = document.createElement('div');
-      div.classList.add('error');
-      div.textContent = `The length of the ${input.classList[0]} input should not exceed ${len} characters`;
-      parent.appendChild(div);
+      error(parent, `The length of the ${input.classList[0]} input should not exceed ${len} characters`);
     } else if(input.value.length < len && parent.querySelector('.error')) {
       parent.removeChild(parent.querySelector('.error'));
     }
   };
+
   // Return choosed sections
   // Throw error if no sections were choosed
   const choosedSections = e => {
@@ -65,10 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
       document.querySelector('.container').classList.add('visible-container');
     } else {
       if (!subjects.querySelector('.error')) {
-        const span = document.createElement('span');
-        span.classList.add('error');
-        span.textContent = 'Please, choose at least one item';
-        subjects.appendChild(span);
+        error(subjects, 'Please, choose at least one item');
       }
     }
   };
@@ -87,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
       lines.push('<!-- Update your html tag to include the itemscope and itemtype attributes. -->');
       lines.push('<html lang="en" itemscope="" itemtype="http://schema.org/Webpage">');
     } else {
-      lines.push('<html>');
+      lines.push('<html lang="en">');
     }
 
     // MAIN
@@ -133,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // FACEBOOK, PINTEREST
     if (socialSections.includes('facebook') || socialSections.includes('pinterest')) {
-      lines.push('\t\t<!-- Open Graph markup (Facebook, Pinterest) -->');
+      lines.push('\t\t<!-- Open Graph markup (Facebook) -->');
       lines.push(`\t\t<meta property="og:url" content="${inputFields.url}/"/>`);
       lines.push(`\t\t<meta property="og:type" content="${inputFields.type}"/>`);
       lines.push(`\t\t<meta property="og:title" content="${inputFields.title}"/>`);
@@ -141,6 +144,12 @@ document.addEventListener('DOMContentLoaded', () => {
       lines.push(`\t\t<meta property="og:image" content="${inputFields.summaryImage}"/>`);
       lines.push('\t\t<meta property="og:locale" content="en_US"/>');
       lines.push(`\t\t<meta property="og:site_name" content="${inputFields.siteName}"/>`);
+      lines.push('');
+      lines.push('\t\t<!-- Open Graph markup (Pinterest) -->');
+      lines.push(`\t\t<meta property="article:published_time" content="${(new Date).toISOString()}"/>`);
+      lines.push(`\t\t<meta property="article:modified_time" content="${(new Date).toISOString()}"/>`);
+      lines.push(`\t\t<meta property="article:section" content="${inputFields.title}"/>`);
+      lines.push(`\t\t<meta property="article:tag" content="${inputFields.description}"/>`);
     }
 
     lines.push('\t</head>');
@@ -151,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // Make all checkboxes toogle their state(checked: true || false)
-  const selectAll = bool => {
+    const selectAll = bool => {
     [].forEach.call(inputCheckbox, elem => {
       elem.checked = bool;
     });
