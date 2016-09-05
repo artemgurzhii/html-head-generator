@@ -6,7 +6,7 @@
   display: block;
 }
 
-/*
+/*error
   Animating github icon
 ---------------------------*/
 .git svg {
@@ -33,8 +33,10 @@
   animation: octocatWave 560ms ease-in-out;
 }
 
-span.error {
+.error {
   color: red;
+  font-weight: 100;
+  margin-top: 5px;
 }
 
 .container {
