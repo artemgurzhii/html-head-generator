@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // Return needed data
-  const initialize = () => {
+  function initialize() {
     Object.keys(inputFields).map(key => {
       inputFields[key] = document.querySelector(`.${key}`).value || '';
     });
@@ -203,4 +203,4 @@ document.addEventListener('DOMContentLoaded', () => {
   // Making all input[type="checkbox"] checked when ckicking on 'Select All'
   selectAllSections.addEventListener('click', () => selectAllSections.checked ? selectAll(true) : selectAll(false), false);
 
-});
+}, false);

@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function () {
   };
 
   // Return needed data
-  var initialize = function initialize() {
+  function initialize() {
     Object.keys(inputFields).map(function (key) {
       inputFields[key] = document.querySelector('.' + key).value || '';
     });
@@ -205,4 +205,4 @@ document.addEventListener('DOMContentLoaded', function () {
   selectAllSections.addEventListener('click', function () {
     return selectAllSections.checked ? selectAll(true) : selectAll(false);
   }, false);
-});
+}, false);
