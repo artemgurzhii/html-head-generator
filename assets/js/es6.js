@@ -36,9 +36,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // Sections to show
   let socialSections = [];
 
-  // Text to return to textarea
-  let lines = [];
-
   // Function declaration section
   // ============================
   // Create error (append span to the parent with the error text)
@@ -55,6 +52,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if (input.value.length >= len && !parent.querySelector('.error')) {
       error(parent, `The length of the ${input.classList[0]} input should not exceed ${len} characters`);
     } else if(input.value.length < len && parent.querySelector('.error')) {
+      parent.removeChild(parent.querySelector('.error'));
+    }
+  };
+
+  const validateText = (input, char) => {
+    const parent = input.parentNode;
+    if (!input.value.includes(char) && !parent.querySelector('.error')) {
+      error(parent, `Element ${input.classList[0]} should contain ${char}`);
+    } else if(input.value.includes(char) && parent.querySelector('.error')) {
       parent.removeChild(parent.querySelector('.error'));
     }
   };
@@ -83,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
     Object.keys(inputFields).map(key => {
       inputFields[key] = document.querySelector(`.${key}`).value || '';
     });
-    lines = [];
+    let lines = [];
     lines.push('<!-- Copy everything from input and paste it in your html file -->');
 
     // GOOGLE
@@ -173,9 +179,13 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       input.addEventListener('keyup', () => {
         output.value = initialize();
-        console.log(initialize());
+
         validateLength(formInputs.querySelector('.description'), 155);
         validateLength(formInputs.querySelector('.title'), 70);
+
+        validateText(formInputs.querySelector('.twitterPublisher'), '@');
+        validateText(formInputs.querySelector('.twitterAuthor'), '@');
+        validateText(formInputs.querySelector('.summaryImage'), '.png');
       }, false);
     }
   });

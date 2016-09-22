@@ -38,9 +38,6 @@ document.addEventListener('DOMContentLoaded', function () {
   // Sections to show
   var socialSections = [];
 
-  // Text to return to textarea
-  var lines = [];
-
   // Function declaration section
   // ============================
   // Create error (append span to the parent with the error text)
@@ -57,6 +54,15 @@ document.addEventListener('DOMContentLoaded', function () {
     if (input.value.length >= len && !parent.querySelector('.error')) {
       error(parent, 'The length of the ' + input.classList[0] + ' input should not exceed ' + len + ' characters');
     } else if (input.value.length < len && parent.querySelector('.error')) {
+      parent.removeChild(parent.querySelector('.error'));
+    }
+  };
+
+  var validateText = function validateText(input, char) {
+    var parent = input.parentNode;
+    if (!input.value.includes(char) && !parent.querySelector('.error')) {
+      error(parent, 'Element ' + input.classList[0] + ' should contain ' + char);
+    } else if (input.value.includes(char) && parent.querySelector('.error')) {
       parent.removeChild(parent.querySelector('.error'));
     }
   };
@@ -85,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function () {
     Object.keys(inputFields).map(function (key) {
       inputFields[key] = document.querySelector('.' + key).value || '';
     });
-    lines = [];
+    var lines = [];
     lines.push('<!-- Copy everything from input and paste it in your html file -->');
 
     // GOOGLE
@@ -175,9 +181,13 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
       input.addEventListener('keyup', function () {
         output.value = initialize();
-        console.log(initialize());
+
         validateLength(formInputs.querySelector('.description'), 155);
         validateLength(formInputs.querySelector('.title'), 70);
+
+        validateText(formInputs.querySelector('.twitterPublisher'), '@');
+        validateText(formInputs.querySelector('.twitterAuthor'), '@');
+        validateText(formInputs.querySelector('.summaryImage'), '.png');
       }, false);
     }
   });
