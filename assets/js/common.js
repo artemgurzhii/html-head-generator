@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function () {
     Object.keys(inputFields).map(function (key) {
       inputFields[key] = document.querySelector('.' + key).value || '';
     });
-
+    lines = [];
     lines.push('<!-- Copy everything from input and paste it in your html file -->');
 
     // GOOGLE
@@ -175,6 +175,7 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
       input.addEventListener('keyup', function () {
         output.value = initialize();
+        console.log(initialize());
         validateLength(formInputs.querySelector('.description'), 155);
         validateLength(formInputs.querySelector('.title'), 70);
       }, false);

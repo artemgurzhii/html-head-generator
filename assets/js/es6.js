@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
     Object.keys(inputFields).map(key => {
       inputFields[key] = document.querySelector(`.${key}`).value || '';
     });
-
+    lines = [];
     lines.push('<!-- Copy everything from input and paste it in your html file -->');
 
     // GOOGLE
@@ -173,6 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       input.addEventListener('keyup', () => {
         output.value = initialize();
+        console.log(initialize());
         validateLength(formInputs.querySelector('.description'), 155);
         validateLength(formInputs.querySelector('.title'), 70);
       }, false);
