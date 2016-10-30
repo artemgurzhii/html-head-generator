@@ -38,15 +38,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Function declaration section
   // ============================
-  // Create error (append span to the parent with the error text)
-	function error(append, text) {
+
+	/**
+   * Create error element and append it to the parent node.
+   *
+   * @param {DOMElement} parent Parent node to add element.
+   * @param {string} text Error element inner text.
+   */
+	function error(parent, text) {
 		const span = document.createElement('span');
 		span.classList.add('error');
 		span.textContent = text;
-		append.appendChild(span);
+		paarent.appendChild(span);
 	}
 
-	// Validate meta tag value length
+	/**
+   * Validate if given input has minimum length to pass validation.
+   *
+   * @param {DOMElement} input Input to validate.
+   * @param {number} len Minimum length of input to pass validation.
+   */
 	function validateLength(input, len) {
 		const parent = input.parentNode;
 		if (input.value.length >= len && !parent.querySelector('.error')) {
@@ -56,6 +67,12 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	}
 
+	/**
+	 * Validate if given input inner text contains passed value.
+	 *
+	 * @param {DOMElement} input Input to validate.
+	 * @param {string} char String which input should contain to pass validation.
+	 */
 	function validateText (input, char) {
 		const parent = input.parentNode;
 		if (!input.value.includes(char) && !parent.querySelector('.error')) {
@@ -65,8 +82,12 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	}
 
-  // Return choosed sections
-  // Throw error if no sections were choosed
+	/**
+	 * Return which section where choosen
+	 * Throw error if no sections were choosed
+	 *
+	 * @param {event} e Event which is triggered when function is called
+	 */
 	function choosedSections(e) {
 		e.preventDefault();
 		const labels = subjects.querySelectorAll('label input[type="checkbox"]:checked');
@@ -84,7 +105,9 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	}
 
-  // Return needed data
+	/**
+	 * Function to set initial data in textarea
+	 */
 	function initialize() {
 		Object.keys(inputFields).map(key => {
 			inputFields[key] = document.querySelector(`.${key}`).value || '';
