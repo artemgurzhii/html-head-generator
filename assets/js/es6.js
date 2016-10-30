@@ -56,18 +56,18 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	}
 
-	const validateText = (input, char) => {
+	function validateText (input, char) {
 		const parent = input.parentNode;
 		if (!input.value.includes(char) && !parent.querySelector('.error')) {
 			error(parent, `Element ${input.classList[0]} should contain ${char}`);
 		} else if (input.value.includes(char) && parent.querySelector('.error')) {
 			parent.removeChild(parent.querySelector('.error'));
 		}
-	};
+	}
 
   // Return choosed sections
   // Throw error if no sections were choosed
-	const choosedSections = e => {
+	function choosedSections(e) {
 		e.preventDefault();
 		const labels = subjects.querySelectorAll('label input[type="checkbox"]:checked');
 
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				error(subjects, 'Please, choose at least one item');
 			}
 		}
-	};
+	}
 
   // Return needed data
 	function initialize() {
