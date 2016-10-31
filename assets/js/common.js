@@ -44,8 +44,8 @@ document.addEventListener('DOMContentLoaded', function () {
 	/**
    * Create error element and append it to the parent node.
    *
-   * @param {DOMElement} parent Parent node to add element.
-   * @param {string} text Error element inner text.
+   * @param {Element} parent Parent node to add element.
+   * @param {String} text Text for error element.
    */
 	function error(parent, text) {
 		var span = document.createElement('span');
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	/**
    * Validate if given input has minimum length to pass validation.
    *
-   * @param {DOMElement} input Input to validate.
+   * @param {Element} input Input to validate.
    * @param {number} len Minimum length of input to pass validation.
    */
 	function validateLength(input, len) {
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	/**
   * Validate if given input inner text contains passed value.
   *
-  * @param {DOMElement} input Input to validate.
+  * @param {Element} input Input to validate.
   * @param {string} char String which input should contain to pass validation.
   */
 	function validateText(input, char) {
@@ -109,6 +109,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	/**
   * Function to set initial data in textarea
+   *
+   * @return {String}
   */
 	function initialize() {
 		Object.keys(inputFields).map(function (key) {
@@ -186,7 +188,11 @@ document.addEventListener('DOMContentLoaded', function () {
 		return lines.join('\n');
 	}
 
-	// Make all checkboxes toogle their state(checked: true || false)
+	/**
+  * Make all checkboxes toogle their state(checked: true || false)
+  *
+  * @param {Boolean} bool Set all checkboxes to this artgument.
+  */
 	function selectAll(bool) {
 		[].forEach.call(inputCheckbox, function (elem) {
 			elem.checked = bool;
@@ -207,7 +213,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 				validateLength(formInputs.querySelector('.description'), 155);
 				validateLength(formInputs.querySelector('.title'), 70);
-
 				validateText(formInputs.querySelector('.twitterPublisher'), '@');
 				validateText(formInputs.querySelector('.twitterAuthor'), '@');
 				validateText(formInputs.querySelector('.summaryImage'), '.png');
